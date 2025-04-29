@@ -1,0 +1,42 @@
+4.
+
+!pip install cupy-cuda11x
+
+USE_GPU = False
+
+# Import either cupy or numpy based on USE_GPU flag
+if USE_GPU:
+    import cupy as xp
+else:
+    import numpy as np
+
+N = int(input("Enter size of vector/matrix (N): "))
+
+# Input Vectors
+A = np.array([int(input(f"A[{i}]: ")) for i in range(N)])
+B = np.array([int(input(f"B[{i}]: ")) for i in range(N)])
+
+# Vector Addition
+print("\nVector A:", A)
+print("Vector B:", B)
+print("Addition (A + B):", A + B)
+
+# Input Matrices
+D = np.array([[int(input(f"D[{i}][{j}]: ")) for j in range(N)] for i in range(N)])
+E = np.array([[int(input(f"E[{i}][{j}]: ")) for j in range(N)] for i in range(N)])
+
+# Display Matrices
+print("\nMatrix D:")
+print(D)
+print("\nMatrix E:")
+print(E)
+
+# Matrix Multiplication
+F = D @ E
+print("\nMultiplication Result (D x E):")
+print(F)
+
+
+cd Desktop
+g++ -fopenmp pr1.cpp -o pr1
+./pr1
